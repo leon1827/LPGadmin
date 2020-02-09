@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>钢瓶信息录入页面</title>
+    <style>
+        #header {
+            background-color:rgb(3, 78, 3);
+            color:white;
+            text-align:center;
+            padding:5px;
+        }
+        #nav {
+            line-height:30px;
+            background-color:#eeeeee;
+            height:500px;
+            width:200px;
+            float:left;
+            padding:5px;
+        }
+        #section {
+            width:350px;
+            float:left;
+            padding:10px;
+        }
+        #footer {
+            background-color:rgb(3, 78, 3);
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='header'>
+        <h1>钢瓶信息录入</h1>
+    </div>
+
+    <div id='nav'>
+    <a href = "/">1-返回首页</a>
+    <br><br>
+    <a href = "/page3_kh">2-客户信息登记</a>
+    <br><br>
+    <a href = "/page2_gpquery">3-充装信息查询</a>
+    <br><br>
+    <a href = '/logout'>4-退出当前用户</a>
+ 
+    </div>
+
+    <div class="section">
+        <table>
+            <tr>
+                <td>
+                    <h3>钢瓶档案基本信息</h3>
+                    <form action="{% url 'cylinders:addGp' %}" method="POST" name="addGp">
+                        {% csrf_token %}
+                        <p>角阀编号：<input type="text" name="jf_code"></p>
+                        <p>钢瓶编号：<input type="text" name="gp_code"></p>
+                        <p>站内编号：<input type="text" name="zn_code"></p>
+                        <p>生产日期：<input type="text" name="sc_date"></p>
+                        <p>检验日期：<input type="text" name="jc_date"></p>
+                        <p>生产厂家：<input type="text" name="manufacturer", value="宣城百纳"></p>
+                        <p>钢瓶规格：<input type="text" name="specification" value="YSP35.5"></p>
+                        <p>充装单位：<input type="text" name="company" value="青山液化气站"></p>
+                        <p>下检日期：<input type="text" name="xj_date"></p>
+                        <p>报废日期：<input type="text" name="bf_date"></p>
+                        <input type="submit" value="添加钢瓶档案">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="footer">
+        Copyright @ 青阳县青山液化气站
+    </div>
+
+</body>
+</html>

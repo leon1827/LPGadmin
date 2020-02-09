@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style type="text/css">
+    .container{
+        width: 540px;
+        -webkit-box-pack: center;
+        justify-content: center;
+        margin: 0px auto;
+    }
+    .title{
+        font-size:24px;
+        margin: 0 auto;
+    }
+    .head{
+        background-size: 100% 100%;
+        text-align: center;
+        background: #fff;
+        padding-bottom: 10px;
+    }
+    .corp-name{
+        font-size: 15px;
+        color: #0F81EF;
+        padding: 0 30px;
+        font-weight: 600;
+    }
+    .container .row{
+        background: #fff;
+        margin-top: 8px;
+        padding:10px 15px;
+    }
+    .time-line{
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        height: 128px;
+    }
+    .time-line .item{
+        position: relative;
+        width: 100%;
+        flex-direction: column;
+    }
+    .item .name{
+        margin: 0 auto;
+        width: 100%;
+        font-size: 14px;
+        margin-top: 25px;
+        color: #666666;
+    }
+    .item>span{
+        display: block;
+        text-align: center;
+    }
+
+    .container .row{
+        background: #fff;
+        margin-top: 8px;
+        padding:10px 15px;
+    }
+    .cylinder-detail{
+        padding-top:15px !important;
+    }
+    .cylinder-detail .title{
+        color: #333;
+        text-align: center;
+    }
+
+    .cylinder-detail table{
+        width: 100%;
+    }
+    .detail-table .opt{
+        width: 40%;
+        text-align: right;
+        color: #666;
+    }
+    .detail-table .val{
+        padding-left: 10px;
+        text-align: left;
+        color: #666;
+    }
+    body{
+        max-width: 540px;
+        margin:0 auto;
+        background: #EFEFF4;
+    }
+    .copyright{
+        padding: 8px 0;
+        font-size: 14px;
+        color:#666;
+        text-align: center;
+    }
+    .time-line .item::before{
+        content: '';
+        position:absolute;
+        top:45%;
+        width: 45%;
+        border-top:2px solid #0f81ef;
+        z-index: 8;
+    }
+    .time-line .item::after{
+        content: '';
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        margin-left: -8px;
+        width: 8px;
+        height: 8px;
+        border: 4px solid #0F81EF;
+        background: #fff;
+        border-radius: 50%;
+        z-index: 9;
+    }
+
+    
+</style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- 钢瓶档案 -->
+        <div class="row cylinder-detail">
+            <p class="title">钢瓶档案</p>
+            <table class="detail-table">
+                <tbody>
+                   
+                    <tr>
+                        <td class="opt">阀门编码：</td>
+                        <td class="val" id="jf_code">{{ gpinfo.jf_code }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">钢瓶编号：</td>
+                        <td class="val" id="gp_code">{{ gpinfo.gp_code }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">站内编号：</td>
+                        <td class="val" id="zn_code">{{ gpinfo.zn_code }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">生产日期：</td>
+                        <td class="val" id="sc_date">{{ gpinfo.sc_date }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">检测日期：</td>
+                        <td class="val" id="jc_date">{{ gpinfo.jc_date }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">制造厂商：</td>
+                        <td class="val" id="manufacturer">{{ gpinfo.manufacturer }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">型号规格：</td>
+                        <td class="val" id="specification">{{ gpinfo.specification }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">充装单位：</td>
+                        <td class="val" id="company">{{ gpinfo.company }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">下检日期：</td>
+                        <td class="val" id="xj_date">{{ gpinfo.xj_date }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">报废日期：</td>
+                        <td class="val" id="bf_date">{{ gpinfo.bf_date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 充装信息 -->
+        <div class="row cylinder-detail">
+            <p class="title">充装信息</p>
+            <table class="detail-table">
+                <tbody>
+                    <tr>
+                        <td class="opt">充装介质：</td>
+                        <td class="val">液化石油气</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">最后一次充装时间：</td>
+                        <td class="val" id="zhczsj">{{ czinfo.fill_t }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">操作员：</td>
+                        <td class="val">{{ czinfo.checkb }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 配送信息 -->
+        <div class="row cylinder-detail">
+            <p class="title">配送信息</p>
+            <br>
+            <table class="detail-table">
+                <tbody>
+                    <tr>
+                        <td class="opt">客户名称：</td>
+                        <td class="val" id="csName">{{ psinfo.client }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">预留电话：</td>
+                        <td class="val" id="csTel">{{ psinfo.tel }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">使用地址：</td>
+                        <td class="val" id="csLocal">{{ psinfo.address }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">配送员工：</td>
+                        <td class="val" id="sendName">{{ psinfo.delivery }}</td>
+                    </tr>
+                    <tr>
+                        <td class="opt">送达时间：</td>
+                        <td class="val" id="sendTime">{{ psinfo.time }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row cylinder-detail">
+            {% load static %}
+            <div style="text-align: center; width: 540px;">
+                <img alt="" src="{% static 'cylinders/kefu.png' %}" style="margin: 0 auto;" />
+                <p class="opt">24小时客服：18356257898/15956625731</p>
+            </div>
+        </div>
+
+        <div class="row cylinder-detail">
+            <p class="copyright">copyright @ 青阳县青山液化气站</p>
+        </div>
+    </div>
+</body>
+</html>
